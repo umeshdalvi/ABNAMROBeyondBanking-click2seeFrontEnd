@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      Latest Picture:
+      <img [src]="base64Image" *ngIf="base64Image" />
+      <!--{{outputData|json}}-->
+      <p padding>{{bestMatchData |json}}</p>
+      <h1>{{isData}}</h1>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+
+  </ion-card>
+  <h1>{{isdata}}</h1>
+  <button ion-button (click)="takePicture()">Take a Picture</button>
+</ion-content>
