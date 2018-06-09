@@ -386,7 +386,7 @@ export class AboutPage {
       //this.films = this.httpClient.post('https://axpncqlr97.execute-api.eu-west-1.amazonaws.com/Prod',JSON.stringify(inputObject));
       this.films
         .subscribe(data => {
-          this.outputData=data.responses;
+          this.outputData=data;
             this.isData='true';
           this.bestMatch = this.httpClient.post('https://axpncqlr97.execute-api.eu-west-1.amazonaws.com/Prod',JSON.stringify(this.outputData));
           this.bestMatch

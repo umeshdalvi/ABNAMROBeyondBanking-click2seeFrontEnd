@@ -11,9 +11,9 @@
     <ion-card-content>
       Latest Picture:
       <img [src]="base64Image" *ngIf="base64Image" />
-      <!--{{outputData|json}}-->
+      {{outputData|json}}
       <p padding>{{bestMatchData |json}}</p>
-      <h1>{{isData}}</h1>
+     <!-- <h1>{{isData}}</h1>-->
     </ion-card-content>
   </ion-card>
   <ion-card>
