@@ -1,18 +1,27 @@
-<!--
-  Generated template for the ItemDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>item-details-page</ion-title>
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Item Details</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content *ngIf="selectedItem">
+  <h4 text-center>
+    <b>{{selectedItem.name}}</b>
+  </h4>
+  <div class="item-note" item-center padding text-center>
+    <img style="width: 30%;" [src]="selectedItem.imagePath"/>
+  </div>
+  <p padding text-center>
+    {{selectedItem.price}} &euro;
+  </p>
+  <p padding text-center>
+    {{selectedItem.description}}
+  </p>
+  <p text-center>
+  <button ion-button (click)="finance()" >Finance Assistance</button>
+  <button ion-button (click)="purchase()">Purchase</button>
+  </p>
 </ion-content>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,9 +11,11 @@
     <ion-card-content>
       Latest Picture:
       <img [src]="base64Image" *ngIf="base64Image" />
-      {{outputData|json}}
-      <p padding>{{bestMatchData |json}}</p>
+      <!--<p padding>{{outputData|json}}</p>
+      <p padding> productList {{bestMatchData|json}}</p>
+      <!--<p>{{productList|json}}</p>-->
      <!-- <h1>{{isData}}</h1>-->
+      <!--<p>{{productList|json}}</p>-->
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -21,5 +23,17 @@
   </ion-card>
   <h1>{{isdata}}</h1>
   <button ion-button (click)="takePicture()">Take a Picture</button>
-  <button ion-button (click)="moveToList()">Move to list</button>
+
+  <div *ngIf="productList">
+    <ion-card *ngFor="let item of productList" (click)="itemTapped($event,item);">
+      <ion-card-content>
+        <img [src]="item.imagePath" item-left />
+        <p>{{item.name}}</p>
+        <p padding>
+          {{item.price}} &euro;
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>

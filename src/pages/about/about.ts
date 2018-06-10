@@ -15,20 +15,23 @@ export class AboutPage {
   films: Observable<any>;
   public outputData:Object;
   public isData: string = 'a';
-  bestMatch :Observable<any>;
-  bestMatchData :Observable<any>;
+  bestMatch: any;
+  bestMatchData: any;
+  productList: any;
   itemData:any;
 
 
-  constructor(private camera: Camera,public httpClient: HttpClient,public aboutCtrl:NavController) {
+  constructor(private camera: Camera,public httpClient: HttpClient,public aboutCtrl:NavController){
   }
-  moveToList(itemData){
+  moveToList(event, item){
     this.aboutCtrl.push(ListPage, {
-      item: itemData
+      item: item
     });
-
   }
+
+
   takePicture() {
+    this.productList=null;
    /* let headers = new Headers();
     headers.append("Content-Type", "application/json");*/
 
@@ -51,12 +54,12 @@ export class AboutPage {
             "features":[
               {
                 "type":"WEB_DETECTION",
-                "maxResults":10
+                "maxResults":5
               },
 
               {
                 "type": "IMAGE_PROPERTIES",
-                "maxResults": 10
+                "maxResults":5
               }
             ]
           }
@@ -72,8 +75,8 @@ export class AboutPage {
             this.bestMatch
             .subscribe(data => {
               console.log('my data: ', data);
-              this.bestMatchData = data.productList;
-              this.moveToList(this.bestMatchData);
+              this.bestMatchData = JSON.parse(data);
+              this.productList = this.bestMatchData.productList;
 
             }, (err) => {
               console.log(err);
@@ -91,5 +94,9 @@ export class AboutPage {
 
     });
   }
-
+  itemTapped(event, item) {
+    this.aboutCtrl.push(ItemDetailsPage, {
+      item: item
+    });
+  }
 }
